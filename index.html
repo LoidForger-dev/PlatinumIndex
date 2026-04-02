@@ -1208,6 +1208,35 @@
 
 <section id="ca"><div class="container"><span class="section-tag fade-in">04 — On-Chain</span><h2 class="section-title fade-in" style="text-align:center;">Contract <span>Address</span></h2><div class="divider fade-in" style="margin:0 auto 2.5rem;"></div><div class="ca-box fade-in"><p class="ca-label">$PX Contract Address</p><div class="ca-address"><p class="ca-soon">— Not Launched Yet —</p><p style="font-size:0.7rem;color:var(--muted);">Contract address will be published here at launch</p></div><div class="launch-badge"><div class="launch-dot"></div>Launch Pending</div></div></div></section>
 
+<!-- ===== SOCIALS SECTION (RESTORED) ===== -->
+<section id="socials">
+  <div class="container">
+    <span class="section-tag fade-in" style="text-align:center;display:block;">05 — Community</span>
+    <h2 class="section-title fade-in" style="text-align:center;">Join the <span>Movement</span></h2>
+    <div class="divider fade-in" style="margin:0 auto 2rem;"></div>
+    <p class="fade-in" style="text-align:center;color:var(--muted);font-size:0.95rem;max-width:500px;margin:0 auto 2rem;">
+      Be part of the premium digital asset revolution. Connect with the Platinum Index community.
+    </p>
+
+    <div class="social-cards fade-in">
+      <a href="https://x.com/platinumindex_" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon">𝕏</div>
+        <div class="social-info">
+          <span>Twitter / X</span>
+          <small>@platinumindex_</small>
+        </div>
+      </a>
+      <a href="https://t.me/+-9KJonCVFvE1NDVk" target="_blank" rel="noopener" class="social-card">
+        <div class="social-icon">✈</div>
+        <div class="social-info">
+          <span>Telegram</span>
+          <small>Join the community</small>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <footer><p>© 2026 Platinum Index ($PX) — All rights reserved. Not financial advice. DYOR.</p></footer>
 
 <div class="modal-overlay" id="litepaperModal"><div class="modal"><div class="modal-header"><h3>📄 $PX Lite Paper</h3><button class="modal-close" onclick="document.getElementById('litepaperModal').classList.remove('open')">✕</button></div><div class="modal-body" id="lpBody"><div class="lp-page" id="lpPage1"><img src="1.png" alt="Lite Paper Page 1" loading="lazy" /></div><div class="lp-page" id="lpPage2" style="display:none"><img src="2.png" alt="Lite Paper Page 2" loading="lazy" /></div><div class="lp-page" id="lpPage3" style="display:none"><img src="3.png" alt="Lite Paper Page 3" loading="lazy" /></div></div><div class="modal-nav"><button onclick="lpNav(-1)">← Prev</button><span id="lpCounter">Page 1 / 3</span><button onclick="lpNav(1)">Next →</button></div></div></div>
@@ -1225,8 +1254,11 @@
   function draw() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.globalAlpha = p.opacity; ctx.fill(); p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > canvas.width) p.vx *= -1; if (p.y < 0 || p.y > canvas.height) p.vy *= -1; }); requestAnimationFrame(draw); } draw();
 
   const fadeEls = document.querySelectorAll('.fade-in');
-  new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.12 }).observe, fadeEls.forEach(el => new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.12 }).observe(el));
+  const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')), { threshold: 0.12 });
+  fadeEls.forEach(el => observer.observe(el));
+
   document.getElementById('hamburger').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+
   let currentPage = 1;
   window.lpNav = (dir) => { document.getElementById(`lpPage${currentPage}`).style.display = 'none'; currentPage = Math.max(1, Math.min(3, currentPage + dir)); document.getElementById(`lpPage${currentPage}`).style.display = 'block'; document.getElementById('lpCounter').textContent = `Page ${currentPage} / 3`; };
 
